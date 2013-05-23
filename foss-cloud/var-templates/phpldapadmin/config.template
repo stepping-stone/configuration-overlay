@@ -50,23 +50,23 @@ $servers->newServer('ldap_pla');
 $servers->setValue('server','name','LDAP Master (VIP)');
 $servers->SetValue('server','host','<FOSS-CLOUD-LDAP-VIP>');
 $servers->SetValue('server','port','<FOSS-CLOUD-LDAP-PORT>');
-$servers->SetValue('server','base',array('dc=foss-cloud,dc=org'));
-$servers->setValue('login','bind_id','cn=Manager,dc=foss-cloud,dc=org');
+$servers->SetValue('server','base',array('<FOSS-CLOUD-LDAP-BASE-DN>'));
+$servers->setValue('login','bind_id','cn=Manager,<FOSS-CLOUD-LDAP-BASE-DN>');
 
 // OpenLDAP server Real IP number one (RIP1)
 $servers->newServer('ldap_pla');
 $servers->setValue('server','name','LDAP Master (RIP1)');
 $servers->SetValue('server','host','<FOSS-CLOUD-LDAP-RIP1>');
 $servers->SetValue('server','port','<FOSS-CLOUD-LDAP-PORT>');
-$servers->SetValue('server','base',array('dc=foss-cloud,dc=org'));
-$servers->setValue('login','bind_id','cn=Manager,dc=foss-cloud,dc=org');
+$servers->SetValue('server','base',array('<FOSS-CLOUD-LDAP-BASE-DN>'));
+$servers->setValue('login','bind_id','cn=Manager,<FOSS-CLOUD-LDAP-BASE-DN>');
 
 // OpenLDAP server Real IP number two (RIP2)
 $servers->newServer('ldap_pla');
 $servers->setValue('server','name','LDAP Master (RIP2)');
 $servers->SetValue('server','host','<FOSS-CLOUD-LDAP-RIP2>');
 $servers->SetValue('server','port','<FOSS-CLOUD-LDAP-PORT>');
-$servers->SetValue('server','base',array('dc=foss-cloud,dc=org'));
-$servers->setValue('login','bind_id','cn=Manager,dc=foss-cloud,dc=org');
+$servers->SetValue('server','base',array('<FOSS-CLOUD-LDAP-BASE-DN>'));
+$servers->setValue('login','bind_id','cn=Manager,<FOSS-CLOUD-LDAP-BASE-DN>');
 
 ?>

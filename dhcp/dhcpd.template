@@ -3,6 +3,13 @@
 #                    Germany
 #                    http://www.foss-group.de
 #                    support@foss-group.de
+# 
+# and
+#
+# Copyright (C) 2013 stepping stone GmbH
+# Switzerland
+# http://www.stepping-stone.ch
+# support@stepping-stone.ch 
 #
 # Authors:
 #  Christian Affolter <christian.affolter@stepping-stone.ch>
@@ -29,8 +36,8 @@
 
 ldap-server "<FOSS-CLOUD-LDAP-SERVER>";
 ldap-port <FOSS-CLOUD-LDAP-PORT>;
-ldap-username "cn=dhcp,ou=services,ou=administration,dc=foss-cloud,dc=org";
+ldap-username "<FOSS-CLOUD-DHCP-BIND-DN>";
 ldap-password "<FOSS-CLOUD-DHCP-PASSWORD>";
-ldap-base-dn "ou=dhcp,ou=networks,ou=virtualization,ou=services,dc=foss-cloud,dc=org";
+ldap-base-dn "ou=dhcp,ou=networks,ou=virtualization,ou=services,<FOSS-CLOUD-LDAP-BASE-DN>";
 ldap-dhcp-server-cn "dhcp-01";
 ldap-method dynamic;

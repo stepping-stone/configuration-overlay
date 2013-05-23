@@ -3,6 +3,13 @@
 #                    http://www.foss-group.de
 #                    support@foss-group.de
 #
+# and
+#
+# Copyright (C) 2013 stepping stone GmbH
+# Switzerland
+# http://www.stepping-stone.ch
+# support@stepping-stone.ch 
+#
 # Authors:
 #  Michael Eichenberger <michael.eichenberger@stepping-stone.ch>
 #  Christian Affolter <christian.affolter@stepping-stone.ch>
@@ -30,16 +37,16 @@
 #####################################################################################################################
 # Description:
 #  This file sets the ACLs for the subtree
-#  ou=virtualization,ou=services,dc=foss-cloud,dc=org.
+#  ou=virtualization,ou=services,<FOSS-CLOUD-LDAP-BASE-DN>.
 #####################################################################################################################
 
 # The service user dhcp is allowed to read the DHCP related entries within the
 # networks sub tree
 #####################################################################################################################
-access to dn.subtree="ou=dhcp,ou=networks,ou=virtualization,ou=services,dc=foss-cloud,dc=org"
+access to dn.subtree="ou=dhcp,ou=networks,ou=virtualization,ou=services,<FOSS-CLOUD-LDAP-BASE-DN>"
   attrs=entry,@dhcpService,@dhcpSharedNetwork,@dhcpSubnet,@dhcpPool,@dhcpGroup,@dhcpHost,@dhcpClass,@dhcpSubClass,@dhcpOptions,@dhcpLeases,@dhcpLog,@dhcpServer,@dhcpTSigKey,@dhcpDnsZone,@dhcpFailOverPeer,@dhcpLocator
-  by dn.exact="cn=dhcp,ou=services,ou=administration,dc=foss-cloud,dc=org" read
+  by dn.exact="cn=dhcp,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" read
   by * none 
 
-# ldapsearch -H ldaps://ldapm.int.example.com -b ou=dhcp,ou=networks,ou=virtualization,ou=services,dc=foss-cloud,dc=org -D cn=dhcp,ou=services,ou=administration,dc=foss-cloud,dc=org -s sub -x -W "(objectClass=*)"
+# ldapsearch -H ldaps://ldapm.int.example.com -b ou=dhcp,ou=networks,ou=virtualization,ou=services,<FOSS-CLOUD-LDAP-BASE-DN> -D cn=dhcp,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN> -s sub -x -W "(objectClass=*)"
 

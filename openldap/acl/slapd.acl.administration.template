@@ -1,4 +1,4 @@
-# Copyright (C) 2012 stepping stone GmbH
+# Copyright (C) 2013 stepping stone GmbH
 #                    Switzerland
 #                    http://www.stepping-stone.ch
 #                    support@stepping-stone.ch
@@ -25,15 +25,13 @@
 #
 #
 #####################################################################################################################
-# /etc/openldap/acl/slapd.acl.people.conf
+# /etc/openldap/acl/slapd.administration.services.acl
 #####################################################################################################################
 # Description:
-#  This file sets the ACLs for the subtree ou=people,dc=foss-cloud,dc=org.
+#  This file sets the ACLs for the sub tree ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>.
 #####################################################################################################################
-access to dn.regex="uid=(.+),ou=people,dc=foss-cloud,dc=org$"
-  by dn.regex="uid=$1,ou=people,dc=foss-cloud,dc=org" read
+
+access to dn.regex="cn=(.+),ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>$"
+  by dn.regex="cn=$1,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" read
   by anonymous auth
   by * none
-
-# ldapsearch -H ldaps://ldapm.int.example.com -b "ou=people,dc=foss-cloud,dc=org" -D "uid=1000000,ou=people,dc=foss-cloud,dc=org" -x "(objectclass=*)" -v -W
-
