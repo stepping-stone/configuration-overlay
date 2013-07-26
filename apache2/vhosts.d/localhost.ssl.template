@@ -64,4 +64,9 @@ Listen <FOSS-CLOUD-APACHE-VIP>:<FOSS-CLOUD-APACHE-PORT>
         SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown         downgrade-1.0 force-response-1.0
     </IfModule>
 
+    Alias /FOSS-Cloud_CA.cert.pem /etc/ssl/certs/FOSS-Cloud_CA.cert.pem
+    <Directory /etc/ssl/certs>
+        Order allow,deny
+        Allow from all
+    </Directory>
 </VirtualHost>
