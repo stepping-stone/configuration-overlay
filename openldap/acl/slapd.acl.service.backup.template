@@ -1,0 +1,63 @@
+# Copyright (C) 2013 stepping stone GmbH
+#                    Switzerland
+#                    http://www.stepping-stone.ch
+#                    support@stepping-stone.ch
+#
+# Authors:
+#  Michael Eichenberger <michael.eichenberger@stepping-stone.ch>
+#  
+# Licensed under the EUPL, Version 1.1.
+#
+# You may not use this work except in compliance with the
+# Licence.
+# You may obtain a copy of the Licence at:
+#
+# http://www.osor.eu/eupl
+#
+# Unless required by applicable law or agreed to in
+# writing, software distributed under the Licence is
+# distributed on an "AS IS" basis,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+# express or implied.
+# See the Licence for the specific language governing
+# permissions and limitations under the Licence.
+#
+#
+#####################################################################################################################
+# /etc/openldap/acl/slapd.acl.service.backup.conf
+#####################################################################################################################
+# Description:
+#  This file sets the ACLs for the sub tree
+#  ou=backup,ou=services,dc=stoney-cloud,dc=org.
+#####################################################################################################################
+
+# The service user backup is allowed to read the (online) backup service related entries (for nss-pam-ldapd).
+#####################################################################################################################
+access to dn.subtree="ou=backup,ou=services,<STONEY-CLOUD-LDAP-BASE-DN>"
+  by dn.exact="cn=backup,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>" read
+  by * break
+
+# The (online) backup accounts need to authenticate themselves.
+#####################################################################################################################
+access to dn.regex="uid=(.+),ou=accounts,ou=backup,ou=services,<STONEY-CLOUD-LDAP-BASE-DN>"
+  attrs=userPassword
+  by anonymous auth
+  by * none
+
+# An example test search, with "No such object (32)" as a result. The authentication was suddessful.
+#####################################################################################################################
+# ldapsearch -H "ldaps://ldapm.stoney-cloud.org" \
+#   -b "uid=3723707,ou=accounts,ou=backup,ou=services,dc=stoney-cloud,dc=org" \
+#   -D "uid=3723707,ou=accounts,ou=backup,ou=services,dc=stoney-cloud,dc=org" \
+#   -s sub \
+#   "(objectClass=*)" \
+#   -LLL -W
+# Enter LDAP Password: 
+# No such object (32)
+
+# If we would like display all the attributes (except for the userPassword, which we don't want to show), activate
+# the following ACLs.
+#####################################################################################################################
+#access to dn.regex="uid=(.+),ou=accounts,ou=backup,ou=services,<STONEY-CLOUD-LDAP-BASE-DN>"
+#  by self read
+#  by * none
