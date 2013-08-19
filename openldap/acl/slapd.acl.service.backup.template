@@ -40,7 +40,7 @@ access to dn.subtree="ou=backup,ou=services,<STONEY-CLOUD-LDAP-BASE-DN>"
 # The (online) backup accounts need to authenticate themselves.
 #####################################################################################################################
 access to dn.regex="uid=(.+),ou=accounts,ou=backup,ou=services,<STONEY-CLOUD-LDAP-BASE-DN>"
-  attrs=userPassword
+  by self read
   by anonymous auth
   by * none
 
