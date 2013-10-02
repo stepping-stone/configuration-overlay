@@ -28,8 +28,7 @@
 # /etc/openldap/slapd.conf
 #####################################################################################################################
 # Description:
-#  The file /etc/openldap/slapd.conf is the configuration file for the
-#  stand-alone LDAP daemon.
+#  The file /etc/openldap/slapd.conf is the configuration file for the stand-alone LDAP daemon.
 #####################################################################################################################
 # Include the minimum schema required.
 include         /etc/openldap/schema/core.schema
@@ -54,9 +53,9 @@ include         /etc/openldap/schema/sst.schema
 include         /etc/openldap/schema/dhcp.schema
 
 # CA signed certificate and server cert entries:
-#TLSCACertificateFile   <FOSS-CLOUD-SLAPD-CA-CERTIFICATE-FILE>
-#TLSCertificateFile     /etc/openldap/ssl/<FOSS-CLOUD-SLAPD-CERTIFICATE>
-#TLSCertificateKeyFile  /etc/openldap/ssl/keys/<FOSS-CLOUD-SLAPD-KEY>
+#TLSCACertificateFile   <STONEY-CLOUD-SLAPD-CA-CERTIFICATE-FILE>
+#TLSCertificateFile     /etc/openldap/ssl/<STONEY-CLOUD-SLAPD-CERTIFICATE>
+#TLSCertificateKeyFile  /etc/openldap/ssl/keys/<STONEY-CLOUD-SLAPD-KEY>
 
 # Define global ACLs to enable default read access on the schemas
 # (used for phpLDAPadmin).
@@ -125,25 +124,25 @@ sizelimit       100000
 # Specify an integer ID from 0 to 4095 for this server.
 # These IDs are required when using multimaster replication and each master
 # must have a unique ID.
-ServerID <FOSS-CLOUD-SLAPD-SERVER-ID>
+ServerID <STONEY-CLOUD-SLAPD-SERVER-ID>
 
 #####################################################################################################################
 # Backend Definitions
 #####################################################################################################################
-# <FOSS-CLOUD-LDAP-BASE-DN>
+# <STONEY-CLOUD-LDAP-BASE-DN>
 #####################################################################################################################
 # This directive marks the beginning of a database instance declaration.
 # database <type>
 database        hdb
 
 # This will help to keep your our slaves in sync during a large modification
-limits          dn.regex="cn=(.+),ou=(.+),ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" size=unlimited time=unlimited
+limits          dn.regex="cn=(.+),ou=(.+),ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>" size=unlimited time=unlimited
 
-suffix          "<FOSS-CLOUD-LDAP-BASE-DN>"
-rootdn          "cn=Manager,<FOSS-CLOUD-LDAP-BASE-DN>"
+suffix          "<STONEY-CLOUD-LDAP-BASE-DN>"
+rootdn          "cn=Manager,<STONEY-CLOUD-LDAP-BASE-DN>"
 
 # The hash was generated using the command "slappasswd -s 'secret'".
-rootpw          <FOSS-CLOUD-SLAPD-ROOT-PW>
+rootpw          <STONEY-CLOUD-SLAPD-ROOT-PW>
 
 
 # This directive specifies the directory where the HDB files containing the
@@ -152,7 +151,7 @@ rootpw          <FOSS-CLOUD-SLAPD-ROOT-PW>
 # accessible by the slapd and slap tools.
 # Mode 700 recommended.
 
-directory       /var/lib/openldap-hdb/foss-cloud
+directory       /var/lib/openldap-hdb/stoney-cloud
 
 # Specify the number of entries which should be held in memory.
 # This value is separate from the set_cachesize option in DB_CONFIG and is used
@@ -204,27 +203,35 @@ dbconfig        set_lg_bsize      2097152
 # set_lg_dir <Log Directory Path>
 # If not set, the the log files are automatically stored in the same directory
 # as the database
-dbconfig        set_lg_dir        /var/lib/openldap-hdb/foss-cloud
+dbconfig        set_lg_dir        /var/lib/openldap-hdb/stoney-cloud
 
 # Indices to maintain
-index           objectClass                     pres,eq
-index           entryCSN                        eq
-index           entryUUID                       eq
-index		cn				eq
-index           ou                              eq
-index           uid                             eq
+index           objectClass                         pres,eq
+index           entryCSN                            eq
+index           entryUUID                           eq
+index           cn                                  eq
+index           member                              eq
+index           memberUid                           eq
+index           ou                                  eq
+index           uid                                 eq
+index           uidNumber                           eq
 
 # Indices for the multiple services
-index           sstDisplayName                  eq
-index           sstSelfService                  eq
+index           mail                                eq
+index           sstDisplayName                      eq
+index           sstIsActive                         eq
+index           sstSelfService                      eq
 
 # Indices for the service virtualization
-index           sstGroupUID                     eq
-index           sstNode                         eq
-index           sstStoragePool                  eq
-index           sstVirtualMachinePool           eq
-index           sstVirtualMachinePoolType       eq
-index           sstVirtualMachineType           eq
+index           dhcpHWAddress                       eq
+index           sstGroupUID                         eq
+index           sstNode                             eq
+index           sstStoragePool                      eq
+index           sstThinProvisioningVirtualMachine   eq
+index           sstVirtualMachine                   eq
+index           sstVirtualMachinePool               eq
+index           sstVirtualMachinePoolType           eq
+index           sstVirtualMachineType               eq
 
 # Sync Provider overlay
 # The Sync Provider overlay implements the provider-side support for the LDAP
@@ -257,13 +264,13 @@ overlay dynlist
 dynlist-attrset labeledURIObject labeledURI member
 
 overlay unique
-unique_base             "<FOSS-CLOUD-LDAP-BASE-DN>"
+unique_base             "<STONEY-CLOUD-LDAP-BASE-DN>"
 unique_attributes       uid
 
 
 # global read-everything mirror mode syncrepl ACL
-access to dn.subtree="<FOSS-CLOUD-LDAP-BASE-DN>"
-  by dn.exact="cn=slapd-mirrormode,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" read
+access to dn.subtree="<STONEY-CLOUD-LDAP-BASE-DN>"
+  by dn.exact="cn=slapd-mirrormode,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>" read
   by * break
 
 #####################################################################################################################
@@ -283,14 +290,14 @@ include         /etc/openldap/acl/slapd.acl.service.virtualization.conf
 # site running a syncrepl replication engine. The replica content is kept
 # synchronized to the master content using the LDAP Content Synchronization
 # protocol
-syncrepl rid=<FOSS-CLOUD-SLAPD-SYNCREPL-RID>
-         provider=ldaps://<FOSS-CLOUD-SLAPD-SYNCREPL-PROVIDER>
+syncrepl rid=<STONEY-CLOUD-SLAPD-SYNCREPL-RID>
+         provider=ldaps://<STONEY-CLOUD-SLAPD-SYNCREPL-PROVIDER>
          type=refreshAndPersist
-         searchbase="<FOSS-CLOUD-LDAP-BASE-DN>"
+         searchbase="<STONEY-CLOUD-LDAP-BASE-DN>"
          schemachecking=on
          bindmethod=simple
-         binddn="cn=slapd-mirrormode,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>"
-         credentials=<FOSS-CLOUD-SLAPD-SYNCREPL-CREDENTIALS>
+         binddn="cn=slapd-mirrormode,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>"
+         credentials=<STONEY-CLOUD-SLAPD-SYNCREPL-CREDENTIALS>
          retry="10 3 30 3 60 3 300 3 600 +"
 
 # This option puts a replica database into "mirror" mode. Update operations will

@@ -1,22 +1,14 @@
-# Copyright (C) 2012 FOSS-Group
-#                    Germany
-#                    http://www.foss-group.de
-#                    support@foss-group.de
-#
-# and
-#
 # Copyright (C) 2013 stepping stone GmbH
-# Switzerland
-# http://www.stepping-stone.ch
-# support@stepping-stone.ch 
+#                    Switzerland
+#                    http://www.stepping-stone.ch
+#                    support@stepping-stone.ch 
 #
 # Authors:
 #  Christian Affolter <christian.affolter@stepping-stone.ch>
 #  Michael Eichenberger <michael.eichenberger@stepping-stone.ch>
 #  
-# Licensed under the EUPL, Version 1.1 or - as soon they
-# will be approved by the European Commission - subsequent
-# versions of the EUPL (the "Licence");
+# Licensed under the EUPL, Version 1.1.
+#
 # You may not use this work except in compliance with the
 # Licence.
 # You may obtain a copy of the Licence at:
@@ -31,7 +23,7 @@
 # See the Licence for the specific language governing
 # permissions and limitations under the Licence.
 #
-# 
+#
 ################################################################################
 # /etc/openldap/ldap.conf
 ################################################################################
@@ -65,15 +57,15 @@ DEREF           never
 # on. If no port number is provided, the default port for the scheme is used
 # (389 for ldap://, 636 for ldaps://). A space separated list of URIs may be
 # provided.
-URI             <FOSS-CLOUD-LDAP-VIP-URI>
+URI             <STONEY-CLOUD-LDAP-VIP-URI>
 
 # Used to specify the default base DN to use when performing ldap operations.
 # The base must be specified as a Distinguished Name in LDAP format.
-BASE            <FOSS-CLOUD-LDAP-BASE-DN>
+BASE            <STONEY-CLOUD-LDAP-BASE-DN>
 
 # This is a local copy of the certificate of the certificate authority
 # used to sign the server certificate for the LDAP server I am using
-#TLS_CACERT <FOSS-CLOUD-LDAP-CA-CERTIFICATE-FILE>
+#TLS_CACERT <STONEY-CLOUD-LDAP-CA-CERTIFICATE-FILE>
 
 # The server certificate is requested. If no certificate is provided,
 # or a bad certificate is provided, the session is immediately terminated.
