@@ -1,6 +1,7 @@
 # Rotate client logs
 /var/log/glusterfs/*.log {
   sharedscripts
+  missingok
   postrotate
   /usr/bin/killall -HUP glusterfs > /dev/null 2>&1 || true
   /usr/bin/killall -HUP glusterd > /dev/null 2>&1 || true
@@ -10,6 +11,7 @@
 # Rotate server logs
 /var/log/glusterfs/bricks/*.log {
   sharedscripts
+  missingok
   postrotate
   /usr/bin/killall -HUP glusterfsd > /dev/null 2>&1 || true
   endscript
