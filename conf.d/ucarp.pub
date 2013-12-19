@@ -1,17 +1,17 @@
 # /etc/conf.d/ucarp: config file for /etc/init.d/ucarp
 
 # The network interface to bind to, for example 'eth0'
-UCARP_INTERFACE="<FOSS-CLOUD-PUB-INTERFACE>"
+UCARP_INTERFACE="<STONEY-CLOUD-PUB-INTERFACE>"
 
 # The persistent source address, (real IP), associated with this interface.
-UCARP_SOURCEADDRESS="<FOSS-CLOUD-PUB-RIP-ADDRESS>"
+UCARP_SOURCEADDRESS="<STONEY-CLOUD-PUB-RIP-ADDRESS>"
 
 # The IP address of the virtual server.
-UCARP_VIRTUALADDRESS="<FOSS-CLOUD-PUB-VIP-ADDRESS>"
+UCARP_VIRTUALADDRESS="<STONEY-CLOUD-PUB-VIP-ADDRESS>"
 
 # The prefix length of the virtual server IP address
 # For example 24 for a netmask of 255.255.255.0
-UCARP_VIRTUALPREFIX="<FOSS-CLOUD-PUB-NETMASK>"
+UCARP_VIRTUALPREFIX="<STONEY-CLOUD-PUB-NETMASK>"
 
 # The id of the virtual server [1-255].
 UCARP_VHID=202
@@ -27,7 +27,7 @@ UCARP_UPSCRIPT=/usr/libexec/foss-cloud/ucarp-vip-up-pub.sh
 UCARP_DOWNSCRIPT=/usr/libexec/foss-cloud/ucarp-vip-down-pub.sh
 
 # Additional ucarp options to pass
-UCARP_OPTS="--shutdown <FOSS-CLOUD-UCARP-OPTS>"
+UCARP_OPTS="--shutdown <STONEY-CLOUD-UCARP-OPTS>"
 
 # Set nice (=-5) and ionice (=real-time) priorities to avoid failover on busy systems
 start_stop_daemon_args="-N -5 -I 1"

@@ -28,24 +28,24 @@
 # /etc/openldap/acl/slapd.acl.customers.conf
 #####################################################################################################################
 # Description:
-#  This file sets the ACLs for the sub tree ou=customers,<FOSS-CLOUD-LDAP-BASE-DN>.
+#  This file sets the ACLs for the sub tree ou=customers,<STONEY-CLOUD-LDAP-BASE-DN>.
 #####################################################################################################################
 
 # The service user "notification" is allowed to read the uid, objectClass and
 # sstBelongsToResellerUID attributes.
 #####################################################################################################################
-access to dn.base="ou=customers,<FOSS-CLOUD-LDAP-BASE-DN>"
+access to dn.base="ou=customers,<STONEY-CLOUD-LDAP-BASE-DN>"
   attrs=entry
-  by dn.exact="cn=notification,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" read
+  by dn.exact="cn=notification,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>" read
   by * none 
 
-access to dn.one="ou=customers,<FOSS-CLOUD-LDAP-BASE-DN>"
+access to dn.one="ou=customers,<STONEY-CLOUD-LDAP-BASE-DN>"
   attrs=entry,objectClass,uid,sstBelongsToResellerUID
-  by dn.exact="cn=notification,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" read
+  by dn.exact="cn=notification,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>" read
   by * none 
 
-access to dn.regex="ou=billing,uid=([0-9]+),ou=customers,<FOSS-CLOUD-LDAP-BASE-DN>"
-  by dn.exact="cn=notification,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" read
+access to dn.regex="ou=billing,uid=([0-9]+),ou=customers,<STONEY-CLOUD-LDAP-BASE-DN>"
+  by dn.exact="cn=notification,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>" read
   by * none 
 
-# ldapsearch -H ldaps://ldapm.int.example.com -b ou=customers,<FOSS-CLOUD-LDAP-BASE-DN> -D cn=notification,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN> -s sub -x -W "(objectClass=*)"
+# ldapsearch -H ldaps://ldapm.int.example.com -b ou=customers,<STONEY-CLOUD-LDAP-BASE-DN> -D cn=notification,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN> -s sub -x -W "(objectClass=*)"

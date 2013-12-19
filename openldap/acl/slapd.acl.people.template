@@ -28,12 +28,12 @@
 # /etc/openldap/acl/slapd.acl.people.conf
 #####################################################################################################################
 # Description:
-#  This file sets the ACLs for the subtree ou=people,<FOSS-CLOUD-LDAP-BASE-DN>.
+#  This file sets the ACLs for the subtree ou=people,<STONEY-CLOUD-LDAP-BASE-DN>.
 #####################################################################################################################
-access to dn.regex="uid=(.+),ou=people,<FOSS-CLOUD-LDAP-BASE-DN>$"
-  by dn.regex="uid=$1,ou=people,<FOSS-CLOUD-LDAP-BASE-DN>" read
+access to dn.regex="uid=(.+),ou=people,<STONEY-CLOUD-LDAP-BASE-DN>$"
+  by dn.regex="uid=$1,ou=people,<STONEY-CLOUD-LDAP-BASE-DN>" read
   by anonymous auth
   by * none
 
-# ldapsearch -H ldaps://ldapm.int.example.com -b "ou=people,<FOSS-CLOUD-LDAP-BASE-DN>" -D "uid=1000000,ou=people,<FOSS-CLOUD-LDAP-BASE-DN>" -x "(objectclass=*)" -v -W
+# ldapsearch -H ldaps://ldapm.int.example.com -b "ou=people,<STONEY-CLOUD-LDAP-BASE-DN>" -D "uid=1000000,ou=people,<STONEY-CLOUD-LDAP-BASE-DN>" -x "(objectclass=*)" -v -W
 

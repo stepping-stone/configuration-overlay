@@ -37,16 +37,16 @@
 #####################################################################################################################
 # Description:
 #  This file sets the ACLs for the subtree
-#  ou=virtualization,ou=services,<FOSS-CLOUD-LDAP-BASE-DN>.
+#  ou=virtualization,ou=services,<STONEY-CLOUD-LDAP-BASE-DN>.
 #####################################################################################################################
 
 # The service user dhcp is allowed to read the DHCP related entries within the
 # networks sub tree
 #####################################################################################################################
-access to dn.subtree="ou=dhcp,ou=networks,ou=virtualization,ou=services,<FOSS-CLOUD-LDAP-BASE-DN>"
+access to dn.subtree="ou=dhcp,ou=networks,ou=virtualization,ou=services,<STONEY-CLOUD-LDAP-BASE-DN>"
   attrs=entry,@dhcpService,@dhcpSharedNetwork,@dhcpSubnet,@dhcpPool,@dhcpGroup,@dhcpHost,@dhcpClass,@dhcpSubClass,@dhcpOptions,@dhcpLeases,@dhcpLog,@dhcpServer,@dhcpTSigKey,@dhcpDnsZone,@dhcpFailOverPeer,@dhcpLocator
-  by dn.exact="cn=dhcp,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" read
+  by dn.exact="cn=dhcp,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>" read
   by * none 
 
-# ldapsearch -H ldaps://ldapm.int.example.com -b ou=dhcp,ou=networks,ou=virtualization,ou=services,<FOSS-CLOUD-LDAP-BASE-DN> -D cn=dhcp,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN> -s sub -x -W "(objectClass=*)"
+# ldapsearch -H ldaps://ldapm.int.example.com -b ou=dhcp,ou=networks,ou=virtualization,ou=services,<STONEY-CLOUD-LDAP-BASE-DN> -D cn=dhcp,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN> -s sub -x -W "(objectClass=*)"
 

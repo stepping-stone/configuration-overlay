@@ -34,10 +34,10 @@
 #
 
 
-ldap-server "<FOSS-CLOUD-LDAP-SERVER>";
-ldap-port <FOSS-CLOUD-LDAP-PORT>;
-ldap-username "<FOSS-CLOUD-DHCP-BIND-DN>";
-ldap-password "<FOSS-CLOUD-DHCP-PASSWORD>";
-ldap-base-dn "ou=dhcp,ou=networks,ou=virtualization,ou=services,<FOSS-CLOUD-LDAP-BASE-DN>";
+ldap-server "<STONEY-CLOUD-LDAP-SERVER>";
+ldap-port <STONEY-CLOUD-LDAP-PORT>;
+ldap-username "<STONEY-CLOUD-DHCP-BIND-DN>";
+ldap-password "<STONEY-CLOUD-DHCP-PASSWORD>";
+ldap-base-dn "ou=dhcp,ou=networks,ou=virtualization,ou=services,<STONEY-CLOUD-LDAP-BASE-DN>";
 ldap-dhcp-server-cn "dhcp-01";
 ldap-method dynamic;

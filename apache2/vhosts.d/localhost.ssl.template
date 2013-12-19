@@ -25,10 +25,10 @@
 #
 #
 
-Listen <FOSS-CLOUD-APACHE-VIP>:<FOSS-CLOUD-APACHE-PORT>
+Listen <STONEY-CLOUD-APACHE-VIP>:<STONEY-CLOUD-APACHE-PORT>
 
-<VirtualHost <FOSS-CLOUD-APACHE-VIP>:<FOSS-CLOUD-APACHE-PORT>>
-    ServerName <FOSS-CLOUD-APACHE-VIP-NAME>
+<VirtualHost <STONEY-CLOUD-APACHE-VIP>:<STONEY-CLOUD-APACHE-PORT>>
+    ServerName <STONEY-CLOUD-APACHE-VIP-NAME>
     DocumentRoot "/var/www/localhost/htdocs"
 
     RewriteEngine on
@@ -36,8 +36,8 @@ Listen <FOSS-CLOUD-APACHE-VIP>:<FOSS-CLOUD-APACHE-PORT>
 
     SSLEngine on
     SSLCipherSuite HIGH:MEDIUM
-    SSLCertificateFile /etc/ssl/apache2/<FOSS-CLOUD-APACHE-CERTIFICATE-FILE>
-    SSLCertificateKeyFile /etc/ssl/apache2/<FOSS-CLOUD-APACHE-CERTIFICATE-KEY-FILE>
+    SSLCertificateFile /etc/ssl/apache2/<STONEY-CLOUD-APACHE-CERTIFICATE-FILE>
+    SSLCertificateKeyFile /etc/ssl/apache2/<STONEY-CLOUD-APACHE-CERTIFICATE-KEY-FILE>
     SSLCACertificateFile /etc/ssl/certs/FOSS-Cloud_CA.cert.pem
 
     <Files ~ "\.(cgi|shtml|phtml|php?)$">

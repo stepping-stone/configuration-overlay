@@ -28,10 +28,10 @@
 # /etc/openldap/acl/slapd.administration.services.acl
 #####################################################################################################################
 # Description:
-#  This file sets the ACLs for the sub tree ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>.
+#  This file sets the ACLs for the sub tree ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>.
 #####################################################################################################################
 
-access to dn.regex="cn=(.+),ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>$"
-  by dn.regex="cn=$1,ou=services,ou=administration,<FOSS-CLOUD-LDAP-BASE-DN>" read
+access to dn.regex="cn=(.+),ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>$"
+  by dn.regex="cn=$1,ou=services,ou=administration,<STONEY-CLOUD-LDAP-BASE-DN>" read
   by anonymous auth
   by * none
