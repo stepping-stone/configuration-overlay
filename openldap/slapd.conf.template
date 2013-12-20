@@ -53,9 +53,9 @@ include         /etc/openldap/schema/sst.schema
 include         /etc/openldap/schema/dhcp.schema
 
 # CA signed certificate and server cert entries:
-#TLSCACertificateFile   <STONEY-CLOUD-SLAPD-CA-CERTIFICATE-FILE>
-#TLSCertificateFile     /etc/openldap/ssl/<STONEY-CLOUD-SLAPD-CERTIFICATE>
-#TLSCertificateKeyFile  /etc/openldap/ssl/keys/<STONEY-CLOUD-SLAPD-KEY>
+<STONEY-CLOUD-SLAPD-CA-CERTIFICATE-FILE>
+<STONEY-CLOUD-SLAPD-CERTIFICATE>
+<STONEY-CLOUD-SLAPD-KEY>
 
 # Define global ACLs to enable default read access on the schemas
 # (used for phpLDAPadmin).
@@ -151,7 +151,7 @@ rootpw          <STONEY-CLOUD-SLAPD-ROOT-PW>
 # accessible by the slapd and slap tools.
 # Mode 700 recommended.
 
-directory       /var/lib/openldap-hdb/stoney-cloud
+directory       /var/lib/openldap-hdb/foss-cloud
 
 # Specify the number of entries which should be held in memory.
 # This value is separate from the set_cachesize option in DB_CONFIG and is used
@@ -203,7 +203,7 @@ dbconfig        set_lg_bsize      2097152
 # set_lg_dir <Log Directory Path>
 # If not set, the the log files are automatically stored in the same directory
 # as the database
-dbconfig        set_lg_dir        /var/lib/openldap-hdb/stoney-cloud
+dbconfig        set_lg_dir        /var/lib/openldap-hdb/foss-cloud
 
 # Indices to maintain
 index           objectClass                         pres,eq
@@ -291,7 +291,7 @@ include         /etc/openldap/acl/slapd.acl.service.virtualization.conf
 # synchronized to the master content using the LDAP Content Synchronization
 # protocol
 syncrepl rid=<STONEY-CLOUD-SLAPD-SYNCREPL-RID>
-         provider=ldaps://<STONEY-CLOUD-SLAPD-SYNCREPL-PROVIDER>
+         provider=<STONEY-CLOUD-SLAPD-SYNCREPL-PROVIDER>
          type=refreshAndPersist
          searchbase="<STONEY-CLOUD-LDAP-BASE-DN>"
          schemachecking=on

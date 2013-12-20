@@ -65,8 +65,8 @@ BASE            <STONEY-CLOUD-LDAP-BASE-DN>
 
 # This is a local copy of the certificate of the certificate authority
 # used to sign the server certificate for the LDAP server I am using
-#TLS_CACERT <STONEY-CLOUD-LDAP-CA-CERTIFICATE-FILE>
+<STONEY-CLOUD-LDAP-CA-CERTIFICATE-FILE>
 
 # The server certificate is requested. If no certificate is provided,
 # or a bad certificate is provided, the session is immediately terminated.
-#TLS_REQCERT demand
+<STONEY-CLOUD-LDAP-CA-CERTIFICATE-REQUIRE>
