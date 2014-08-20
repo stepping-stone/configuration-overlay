@@ -78,7 +78,7 @@ argsfile        /var/run/openldap/slapd.args
 # Load dynamic backend modules:
 modulepath    /usr/lib64/openldap/openldap
 moduleload    dynlist.so
-moduleload    unique.so
+# moduleload    unique.so
 # moduleload    back_sock.so
 # moduleload    back_shell.so
 # moduleload    back_relay.so
@@ -263,10 +263,9 @@ syncprov-reloadhint TRUE
 overlay dynlist
 dynlist-attrset labeledURIObject labeledURI member
 
-overlay unique
-unique_base             "<STONEY-CLOUD-LDAP-BASE-DN>"
-unique_attributes       uid
-
+#overlay unique
+#unique_base             "<STONEY-CLOUD-LDAP-BASE-DN>"
+#unique_attributes       uid
 
 # global read-everything mirror mode syncrepl ACL
 access to dn.subtree="<STONEY-CLOUD-LDAP-BASE-DN>"
