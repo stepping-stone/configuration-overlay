@@ -221,6 +221,7 @@ index           mail                                eq
 index           sstDisplayName                      eq
 index           sstIsActive                         eq
 index           sstSelfService                      eq
+index           sstProvisioningState                eq
 index           sstBelongsToUID                     eq
 index           sstBelongsToResellerUID             eq
 index           sstBelongsToCustomerUID             eq
