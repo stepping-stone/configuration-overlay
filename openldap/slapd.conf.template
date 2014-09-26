@@ -221,6 +221,11 @@ index           mail                                eq
 index           sstDisplayName                      eq
 index           sstIsActive                         eq
 index           sstSelfService                      eq
+index           sstBelongsToUID                     eq
+index           sstBelongsToResellerUID             eq
+index           sstBelongsToCustomerUID             eq
+index           sstBelongsToPersonUID               eq
+index           sstEmployeeOfUID                    eq
 
 # Indices for the service virtualization
 index           dhcpHWAddress                       eq
